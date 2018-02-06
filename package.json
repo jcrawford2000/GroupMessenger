@@ -1,0 +1,30 @@
+{
+  "name": "groupmessenger",
+  "version": "1.0.0",
+  "description": "Group Messenger",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jcrawford2000/groupmessenger.git"
+  },
+  "keywords": [
+    "SMS",
+    "Group",
+    "Messaging"
+  ],
+  "author": "Justin Crawford",
+  "license": "Apache-3.0",
+  "bugs": {
+    "url": "https://github.com/jcrawford2000/groupmessenger/issues"
+  },
+  "homepage": "https://github.com/jcrawford2000/groupmessenger#readme",
+  "dependencies": {
+    "express": "^4.15.4",
+    "log4js": "^2.3.3",
+    "pug": "^2.0.0-rc.3",
+    "twilio": "^3.6.2"
+  }
+}
