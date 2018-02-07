@@ -33,7 +33,8 @@ logger.level = 'debug';
 logger.info("Group Messenger Server v" + version + " Starting");
 
 var handlerMap = [ {path: '/', handler: requestHandlers.index},
-                   {path: '/sendMessage', handler: requestHandlers.sendMessage}
+                   {path: '/sendMessage', handler: requestHandlers.sendMessage},
+                   {path: '/receiveMessage', handler: requestHandlers.recvMessage}
                  ];
 
 server.start(handlerMap);

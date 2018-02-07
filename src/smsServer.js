@@ -21,9 +21,25 @@
  */
 const twilio = require('twilio');
 const log4js = require('log4js');
+const MessagingResponse = twilio.twiml.MessagingResponse;
+
 const logger = log4js.getLogger("smsServer");
 var config = require('../etc/config.json')
 
+function recvMessage(req, res)
+{
+    logger.debug("Received Message:\nBody:" + req.body.Body
+    + "\nMessageSid:" + req.body.MessageSid 
+    + "\nAccountSid:" + req.body.accountSid
+    + "\nMessagingServiceSid:" + req.body.MessagingServiceSid
+    + "\nFrom:" + req.body.From
+    + "\nTo:" + req.body.To
+    + "\nNumMedia:" + req.body.numMedia);
+    const twiml = new MessagingResponse();
+    twiml.message("Thanks for your message!");
+    res.writeHead(200,{'Content-Type':'text/xml'});
+    res.end(twiml.toString());
+}
 
 
 
@@ -41,12 +57,14 @@ function sendMessage(to, from, msg)
     })
 }
 
+
+
+
+
 logger.level = 'debug';
-
-
-
 
 /**
  * Exports
  */
 exports.sendMessage = sendMessage;
+exports.recvMessage = recvMessage;
