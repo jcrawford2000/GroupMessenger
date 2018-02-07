@@ -22,6 +22,7 @@
 const express = require('express');
 const log4js = require('log4js');
 const path = require('path');
+const bodyParser = require('body-parser');
 
 const logger = log4js.getLogger("server");
 logger.level = 'debug';
@@ -36,6 +37,7 @@ function start(routeMap)
 {
     logger.info("Server Initializing on port " + PORT + "...")
     app.use(log4js.connectLogger(logger, { level: log4js.levels.DEBUG}));
+    app.use(bodyParser());
     app.set('views', './views');
     app.set('view engine','pug');
     app.use('/css',express.static(path.join(__dirname, '../views/css')));
@@ -43,6 +45,7 @@ function start(routeMap)
     {
         logger.debug("Path:" + routeMap[i].path + " Uses Handler:" + routeMap[i].handler );
         app.get(routeMap[i].path, routeMap[i].handler);
+        app.post(routeMap[i].path, routeMap[i].handler);
     }
     app.listen(PORT);
     
